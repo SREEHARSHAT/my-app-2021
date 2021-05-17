@@ -11,7 +11,6 @@ pipeline{
         sh "mvn clean package"
       }
     }
-
     stage('Upload To Nexus'){
       steps{
         script{
@@ -38,4 +37,5 @@ pipeline{
       }
     }
   }
+}
 }
