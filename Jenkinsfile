@@ -13,8 +13,8 @@ pipeline{
     }
     stage('Upload To Nexus'){
       steps{
-       /// script{
-          //def pom = readMavenPom file: 'pom.xml'
+        script{
+          def pom = readMavenPom file: 'pom.xml'
           def repository = pom.version.endsWith("SNAPSHOT") ? 'myapps-snapshot' : 'myapps-release'
           nexusArtifactUploader artifacts: 
             [[artifactId: 'myweb', classifier: '', file: "target/myweb-0.0.1-SNAPSHOT.war", type: 'war']], 
@@ -24,7 +24,7 @@ pipeline{
           nexusVersion: 'nexus3', protocol: 'http', 
           repository: repository, 
           version: '0.0.1-SNAPSHOT'
-      ///  }
+       }
       }
     }
     
