@@ -27,8 +27,6 @@ pipeline{
       steps{
          echo "deploy to dev environment"
       }
-        
-        
+    }
   }
 }
-  }
