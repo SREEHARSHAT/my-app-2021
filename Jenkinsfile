@@ -27,8 +27,9 @@ pipeline{
     }
     stage('dev-deploy'){
       steps{
-         echo "deploy to dev environment"
-      }
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.33.57 docker rm -f mywebapp"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.33.57 docker run -d -p 8080:8080 --name mywebapp harsha59/myapp:v1}"
+        }
     }
   }
 }
